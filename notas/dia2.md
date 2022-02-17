@@ -93,9 +93,15 @@ POOL  2 Replicas: 4 Particiones (PG) (2^n) < [n dato que se usa en el algoritmo 
     OSD4 -       PG2(T2)                 PG4
     OSD5 -
     OSD6 -
+
+
+    OSD1 - PG1
+    OSD2 - PG1
+           PG1???
+
     
 Objeto 8 Mb-> 2 tozos T1 T2 -> Algoritmo de CRUSH (en base al key del objeto hash) (OSD1, OSD2, OSD3, OSD4)
-Alguien quiere recuperarlo (CLIENTE) ALGORITMO CRUSH 
+Alguien quiere recuperarlo (CLIENTE) ALGORITMO CRUSH (MAPA CRUSH < MON)
     -> OSD1, OSD2, OSD3, OSD4 él lo va adeterminar... no tiene que preguntar a nadie
 Fichero -> 2 trozos ()
 
@@ -103,3 +109,24 @@ Fichero -> 2 trozos ()
 
 RED Normal:    1Gbit - 100Mbs - HHD (150)
 RED Backend:   10 Gbit -1000Mbs
+
+
+
+
+Inrea vuestra:
+###########
+
+Maquina 1
+    Interfaz Publica \                              192.168.0.1
+    Interfaz Bend    - NIC 1 | NIC 2                172.30.0.1. OSD.   --cluster-network
+    Interfaz Adm     /                              172.80.0.1
+Maquina 2
+    Interfaz Publica \                              192.168.0.2
+    Interfaz Privada - NIC 1 | NIC 2                172.30.0.2
+    Interfaz Adm     /                              172.80.0.2
+Maquina 3
+    Interfaz Publica \                              192.168.0.3
+    Interfaz Privada - NIC 1 | NIC 2                172.30.0.3
+    Interfaz Adm     /                              172.80.0.3
+
+firewalld
