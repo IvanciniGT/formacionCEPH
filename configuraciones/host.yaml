@@ -1,0 +1,6 @@
+service_type:   host
+hostname:       ip-172-31-11-2
+addr:           172.31.11.2
+labels:    
+    - ivan
+    - _admin

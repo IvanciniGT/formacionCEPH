@@ -1,0 +1,14 @@
+service_type: mon
+placement:
+  hosts:
+    - hostA
+    - hostB
+    - hostC
+---
+service_type: mgr
+placement:
+  label: manager
+---
+service_type: osd
+placement:
+  host_pattern: "osd*" # A nivel del nombre de la maquina

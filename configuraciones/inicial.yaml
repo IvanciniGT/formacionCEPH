@@ -1,0 +1,61 @@
+service_type: alertmanager
+service_name: alertmanager
+placement:
+  count: 1
+---
+service_type: crash
+service_name: crash
+placement:
+  host_pattern: '*'
+--- !!python/object:ceph.deployment.service_spec.MonitoringSpec
+config: null
+networks: []
+placement: !!python/object:ceph.deployment.service_spec.PlacementSpec
+  count: 1
+  count_per_host: null
+  host_pattern: null
+  hosts: []
+  label: null
+port: null
+preview_only: false
+service_id: null
+service_type: grafana
+unmanaged: false
+---
+service_type: mgr
+service_name: mgr
+placement:
+  count: 2
+---
+service_type: mon
+service_name: mon
+placement:
+  count: 5
+--- !!python/object:ceph.deployment.service_spec.MonitoringSpec
+config: null
+networks: []
+placement: !!python/object:ceph.deployment.service_spec.PlacementSpec
+  count: null
+  count_per_host: null
+  host_pattern: '*'
+  hosts: []
+  label: null
+port: null
+preview_only: false
+service_id: null
+service_type: node-exporter
+unmanaged: false
+--- !!python/object:ceph.deployment.service_spec.MonitoringSpec
+config: null
+networks: []
+placement: !!python/object:ceph.deployment.service_spec.PlacementSpec
+  count: 1
+  count_per_host: null
+  host_pattern: null
+  hosts: []
+  label: null
+port: null
+preview_only: false
+service_id: null
+service_type: prometheus
+unmanaged: false

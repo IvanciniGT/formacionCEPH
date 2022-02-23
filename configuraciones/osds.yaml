@@ -1,0 +1,27 @@
+service_type:   osd
+service_id:     ivan_osd
+placement:
+    label:  ivan
+spec:
+    #all: true
+    data_devices:
+        #paths:
+        #    - /dev/sdg
+        # vendor:
+        # model:
+        #rotational: 1 # HDD
+        #size: 5Gb           # Un tamaño exacto
+        size: "50GB:"        #  Hasta 5Gbs
+        #size: "5GB:"        #  A partir de 5Gbs
+        #size: "5Gb:10Gb"
+    db_devices:
+        #rotational: 0 # SSD MVNE
+        size: ":50GB"        #  Hasta 5Gbs
+        limit: 1
+    wal_devices:
+        size: ":50GB"        #  Hasta 5Gbs
+        #rotational: 0 # SSD MVNE
+        limit: 1
+#    osds_per_device:     1   # Cada data_device (disco HDD) tiene su OSD
+#    wal_slots:          2   # Cuántos OSDs pueden usar cada device destinado a wal
+#    db_slots:           2   # Cuántos OSDs pueden usar cada device destinado a db

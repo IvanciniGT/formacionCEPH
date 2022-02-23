@@ -1,0 +1,95 @@
+# Formato de marcado de información de propósito general. Equivalente a JSON o XML
+# Un fichero YAML puede contener múltiples documentos YAML independientes entre si.
+# Cada documento (salvo el primero) comienza con la marca: ---
+# Opcionalmente un doucmento puede acabar con : ...
+# Tiene sentido solamente cuando mandamos ficheros en streaming
+---
+# Un documento en YAML es un NODO
+# Hay 2 tipos de nodos: Escalares y de colección
+---
+# Escalares:
+# Números:
+5
+---
+-17
+---
+-182.1
+---
+# Valores lógicos:
+true    # TRUE True
+---
+false   # FALSE False
+--- 
+# OJO al buscar info por internet.
+# En la spec 1.1 YAML, esto eran valores válidos LOGICOS. Actualmente estamos con la spec 1.2 se han eliminado.
+Yes
+yes
+YES
+y
+Y
+no
+No
+n
+N
+On
+on
+off
+---
+# Textos
+ho"l'a #amigo
+---
+"ho\"l'a #ami\\go"
+---
+'ho"l''a #ami\go'
+---
+# Sintaxis literal
+|
+    escribo un texto
+     que puede tener varias lineas
+    y pongo aqui cosas raras :"#'\
+---
+# Sintaxis folded: Se eliminan los saltos de linea, que son reemplazados por espacios
+>
+    escribo un texto
+     que puede tener varias lineas
+    y pongo aqui cosas raras :"#'\
+---
+~   # nulo  !!null
+---
+# Listas ordenadas: Coleccion de nodos, agrupados
+- nodo 1
+- True
+- 66
+-   
+    - subitem 1
+    - subitem 2
+- Otro item de la primera lista
+-   
+        - subitem 1
+        - subitem 2
+---
+[ item1, True, 67 ] # Esto es una lista
+# No es habitual... salvo un caso concreto
+---
+[]
+---
+# Mapas desordenados: Colecciones claves valor
+clave1: valor1
+clave2: True
+clave3: 
+    - item 1
+    - item 2
+clave4:
+    subclave1: -98
+    subclave2: subvalor 2
+--- 
+# Esquema YAML... es el conunto de etiquetas que puedo poner... para su uso en un determinado programa.
+{clave1: valor 1, clave2: valor2} # No la veremos mucho
+---
+{} # Esta si
+---
+!!str "hola"
+---
+!!bool "true"
+---
+!!python OBJETO:[]
