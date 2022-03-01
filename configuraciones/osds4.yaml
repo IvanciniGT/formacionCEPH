@@ -1,0 +1,13 @@
+service_type: osd
+service_id: alvaro_osd
+placement: 
+  label: alvaro
+spec:
+  data_devices:
+    size: "60GB:"
+  db_devices:
+    size: ":30GB"
+    limit: 1
+  wal_devices:
+    size: ":30GB"
+    limit: 1

@@ -1,0 +1,20 @@
+service_type: osd
+service_id: osd_leyre
+placement:
+    #label: leyre
+    #hosts: 
+    #    - ip-172-31-1-135
+    host_pattern: '*'
+
+spec:
+    data_devices:
+        all: true
+#    data_devices:
+#        size: "50GB:"        #  Hasta 5Gbs
+#    db_devices:
+#        paths:
+#            - /dev/sdg
+#    wal_devices: 
+#        paths:
+#            - /dev/sdh
+#    osds_per_device: 1 # Cada data (disco HDD) tiene su OSD

@@ -1,0 +1,320 @@
+# begin crush map
+tunable choose_local_tries 0
+tunable choose_local_fallback_tries 0
+tunable choose_total_tries 50
+tunable chooseleaf_descend_once 1
+tunable chooseleaf_vary_r 1
+tunable chooseleaf_stable 1
+tunable straw_calc_version 1
+tunable allowed_bucket_algs 54
+
+# devices
+device 0 osd.0 class ssd
+device 1 osd.1 class ssd
+device 2 osd.2 class ssd
+device 3 osd.3 class ssd
+device 4 osd.4 class ssd
+device 5 osd.5 class ssd
+device 6 osd.6 class ssd
+device 7 osd.7 class ssd
+device 8 osd.8 class ssd
+device 9 osd.9 class ssd
+device 10 osd.10 class hdd
+device 11 osd.11 class hdd
+device 12 osd.12 class hdd
+device 13 osd.13 class hdd
+device 14 osd.14 class ssd
+device 15 osd.15 class ssd
+device 16 osd.16 class ssd
+device 17 osd.17 class ssd
+device 18 osd.18 class ssd
+device 19 osd.19 class hdd
+device 20 osd.20 class ssd
+device 21 osd.21 class hdd
+
+# types
+type 0 osd
+type 1 host
+type 2 chassis
+type 3 rack
+type 4 row
+type 5 pdu
+type 6 pod
+type 7 room
+type 8 datacenter
+type 9 zone
+type 10 region
+type 11 root
+
+# buckets
+host ip-172-31-11-174 {
+	id -3		# do not change unnecessarily
+	id -4 class ssd		# do not change unnecessarily
+	id -54 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.0 weight 0.015
+	item osd.8 weight 0.129
+	item osd.9 weight 0.129
+}
+host ip-172-31-11-2 {
+	id -5		# do not change unnecessarily
+	id -6 class ssd		# do not change unnecessarily
+	id -56 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.1 weight 0.015
+	item osd.12 weight 0.129
+	item osd.13 weight 0.129
+}
+rack rack1 {
+	id -21		# do not change unnecessarily
+	id -22 class ssd		# do not change unnecessarily
+	id -57 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item ip-172-31-11-2 weight 0.273
+}
+room sala1 {
+	id -18		# do not change unnecessarily
+	id -20 class ssd		# do not change unnecessarily
+	id -58 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item rack1 weight 0.273
+}
+datacenter dc-ivan {
+	id -15		# do not change unnecessarily
+	id -16 class ssd		# do not change unnecessarily
+	id -59 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item sala1 weight 0.273
+}
+host ip-172-31-1-135 {
+	id -7		# do not change unnecessarily
+	id -8 class ssd		# do not change unnecessarily
+	id -42 class hdd		# do not change unnecessarily
+	# weight 0.288
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.2 weight 0.015
+	item osd.14 weight 0.015
+	item osd.16 weight 0.015
+	item osd.18 weight 0.122
+	item osd.20 weight 0.122
+}
+rack rack1-leyre {
+	id -39		# do not change unnecessarily
+	id -40 class ssd		# do not change unnecessarily
+	id -43 class hdd		# do not change unnecessarily
+	# weight 0.288
+	alg straw2
+	hash 0	# rjenkins1
+	item ip-172-31-1-135 weight 0.288
+}
+room sala1-leyre {
+	id -27		# do not change unnecessarily
+	id -31 class ssd		# do not change unnecessarily
+	id -44 class hdd		# do not change unnecessarily
+	# weight 0.288
+	alg straw2
+	hash 0	# rjenkins1
+	item rack1-leyre weight 0.288
+}
+datacenter dc-leyre {
+	id -26		# do not change unnecessarily
+	id -32 class ssd		# do not change unnecessarily
+	id -45 class hdd		# do not change unnecessarily
+	# weight 0.288
+	alg straw2
+	hash 0	# rjenkins1
+	item sala1-leyre weight 0.288
+}
+host ip-172-31-12-180 {
+	id -11		# do not change unnecessarily
+	id -12 class ssd		# do not change unnecessarily
+	id -55 class hdd		# do not change unnecessarily
+	# weight 0.288
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.4 weight 0.015
+	item osd.15 weight 0.015
+	item osd.17 weight 0.015
+	item osd.19 weight 0.122
+	item osd.21 weight 0.122
+}
+rack rack1-alvaro {
+	id -64		# do not change unnecessarily
+	id -65 class ssd		# do not change unnecessarily
+	id -66 class hdd		# do not change unnecessarily
+	# weight 0.288
+	alg straw2
+	hash 0	# rjenkins1
+	item ip-172-31-12-180 weight 0.288
+}
+room sala1-alvaro {
+	id -61		# do not change unnecessarily
+	id -62 class ssd		# do not change unnecessarily
+	id -63 class hdd		# do not change unnecessarily
+	# weight 0.288
+	alg straw2
+	hash 0	# rjenkins1
+	item rack1-alvaro weight 0.288
+}
+datacenter dc-alvaro {
+	id -35		# do not change unnecessarily
+	id -36 class ssd		# do not change unnecessarily
+	id -41 class hdd		# do not change unnecessarily
+	# weight 0.288
+	alg straw2
+	hash 0	# rjenkins1
+	item sala1-alvaro weight 0.288
+}
+host ip-172-31-3-193 {
+	id -9		# do not change unnecessarily
+	id -10 class ssd		# do not change unnecessarily
+	id -46 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.3 weight 0.015
+	item osd.6 weight 0.129
+	item osd.7 weight 0.129
+}
+rack rackA {
+	id -37		# do not change unnecessarily
+	id -38 class ssd		# do not change unnecessarily
+	id -47 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item ip-172-31-3-193 weight 0.273
+}
+room sala1-sean {
+	id -28		# do not change unnecessarily
+	id -33 class ssd		# do not change unnecessarily
+	id -48 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item rackA weight 0.273
+}
+datacenter dc-sean {
+	id -25		# do not change unnecessarily
+	id -34 class ssd		# do not change unnecessarily
+	id -49 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item sala1-sean weight 0.273
+}
+host ip-172-31-11-154 {
+	id -13		# do not change unnecessarily
+	id -14 class ssd		# do not change unnecessarily
+	id -50 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item osd.5 weight 0.015
+	item osd.10 weight 0.129
+	item osd.11 weight 0.129
+}
+rack rack1-m {
+	id -29		# do not change unnecessarily
+	id -30 class ssd		# do not change unnecessarily
+	id -51 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item ip-172-31-11-154 weight 0.273
+}
+room sala1-m {
+	id -23		# do not change unnecessarily
+	id -24 class ssd		# do not change unnecessarily
+	id -52 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item rack1-m weight 0.273
+}
+datacenter dc-miguel {
+	id -17		# do not change unnecessarily
+	id -19 class ssd		# do not change unnecessarily
+	id -53 class hdd		# do not change unnecessarily
+	# weight 0.273
+	alg straw2
+	hash 0	# rjenkins1
+	item sala1-m weight 0.273
+}
+root default {
+	id -1		# do not change unnecessarily
+	id -2 class ssd		# do not change unnecessarily
+	id -60 class hdd		# do not change unnecessarily
+	# weight 1.669
+	alg straw2
+	hash 0	# rjenkins1
+	item ip-172-31-11-174 weight 0.273
+	item dc-ivan weight 0.273
+	item dc-leyre weight 0.288
+	item dc-alvaro weight 0.288
+	item dc-sean weight 0.273
+	item dc-miguel weight 0.273
+}
+
+# rules
+rule replicated_rule {
+	id 0
+	type replicated
+	min_size 1
+	max_size 10
+	step take default
+	step chooseleaf firstn 0 type host
+	step emit
+}
+#
+#	raiz
+#		datacenter
+#			room
+#				rack-rapido
+#					host
+#				rack-lentos
+#					host
+rule regla_ivan {
+	id 1
+	type replicated
+	min_size 1
+	max_size 10
+	step take default class ssd
+	step chooseleaf firstn 1 type room
+	step emit
+	step take default class hdd
+#	step choose firstn -1 type room
+	step chooseleaf firstn -1 type room
+	step emit
+}
+rule regla_alvaro {
+	id 2
+	type replicated
+	min_size 1
+	max_size 10
+	step take default
+	step chooseleaf firstn 0 type room
+	step emit
+}
+rule regla_miguel {
+	id 3
+	type replicated
+	min_size 1
+	max_size 10
+	step take default
+	step chooseleaf firstn 0 type room
+	step emit
+}
+
+# end crush map

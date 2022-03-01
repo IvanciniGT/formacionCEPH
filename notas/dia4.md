@@ -27,7 +27,7 @@ En según qué escenarios me puede interesar dedicar volumenes a solo 1 tipo de 
           -----------------------------         Objeto: A
           |               |           |         PG:     PG1 ?? Algoritmo CRUSH
           v               v           v
-        CephFS          Block       Object
+        CephFS          Block       Object                  fichero 17-> 5 trozos (5 objetos)
          /               RADOS          \
         /                                \
      POOL1  ------                      POOL2    
@@ -170,6 +170,7 @@ Las operaciones de splitting de Placement groups son muy pesadas
 
 ---
 $ ceph osd pool set-quota ivan max_objects 100000 max_bytes 102400000
+$ ceph osd pool set-quota ivan max_bytes 1000000
                                     ?
                                     Muy complejo de gestionar 
 
@@ -191,9 +192,11 @@ min_size < Replicas mínimas para que el pool se mantenga activo
 
 
 
+ceph osd pool set ivan size 4
+ceph osd pool set ivan min_size 3
 
 
 
 
 
-
+ceph orch ls --service_name=miguel_osd --export

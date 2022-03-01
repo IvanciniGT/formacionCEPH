@@ -1,0 +1,10 @@
+service_type: mds
+service_id: ivan_mds
+
+placement:
+    count: 2
+    labels: mds-clienteA
+# Esto tiene sentido si compartimos máquinas para hacer ciertas funciones.    
+extra_container_args:
+    - --cpus=2
+    - --memory=
