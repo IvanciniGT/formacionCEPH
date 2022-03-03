@@ -203,6 +203,9 @@ $ ceph config set DEMONIO mds_join_fs FILESYSTEM
                   mds.clientea.a      fs_clienteA
 $  ceph config set mds.clienteA.ip-172-31-11-2.eccezm  mds_join_fs  fs_clienteA
 
+
+$ ceph config set mds.leyre_mds.ip-172-31-11-2.svqncs mds_join_fs leyre
+$ ceph config set mds.clienteA.ip-172-31-11-2.eccezm mds_join_fs leyre
 Un filesystem tiene a priori UN UNICO DEMONIO ACTIVO
 Le puedo configurar demonios en Standby
 $ ceph fs set FILESYSTEM allow_standby_replay true
@@ -211,8 +214,16 @@ $ ceph fs set FILESYSTEM allow_standby_replay true
         El otro le tiene en pasivo... pero vinculado a él... nadie más puede usar ese demonio como un demoino de standby. Lo he vinculado.
         Además, el demonio en pasivo (standby), está 100% entragado a la causa... Fijamente mirando ese filesystem, y al tanto de todas las operaciones.
         REPLICA.
+$ ceph fs set leyre allow_standby_replay true
 
 
 Cuantos demonios deben existir en standby para que el filesystem esté funcionando con normalidad.
 $ ceph fs set FILESYSTEM standby_count_wanted 1 
     Si no hay 1 daemon en standby disponible, consideralo unhealthy al filesystem
+    
+
+Si voy por orden creando cosas no hay problema:
+MDS 
+    2 demonios
+FileSystem <> 1 demonio del tirón
+           <> el otro estará en standby    

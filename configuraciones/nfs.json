@@ -1,0 +1,21 @@
+{
+  "export_id": 1,
+  "path": "/",
+  "cluster_id": "ivannfs",
+  "pseudo": "/exportado",
+  "access_type": "RW",
+  "squash": "none",
+  "security_label": true,
+  "protocols": [
+    4
+  ],
+  "transports": [
+    "TCP"
+  ],
+  "fsal": {
+    "name": "CEPH",
+    "user_id": "nfs.ivannfs.1",
+    "fs_name": "ivan"
+  },
+  "clients": []
+}
